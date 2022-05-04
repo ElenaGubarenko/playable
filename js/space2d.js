@@ -2,10 +2,11 @@ class ControlObject2D {
   constructor(object) {
     this.object = object
     this.moving = false
-    this.ahead = true
     this.speed = 0
     this.duration = 0
     this.distance = 0
+    this.x = 0
+    this.y = 0
     this.startTime = 0
     this.currentTime = 0
   }
@@ -21,9 +22,9 @@ class ControlObject2D {
     this.moving = true
     this.calculateValues()
 
-    console.log(["move", this.object, this.moving, this.ahead, this.speed, this.duration, this.distance])
+    console.log(["move", this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y])
 
-    return [this.object, this.moving, this.ahead, this.speed, this.duration, this.distance]
+    return [this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y]
   }
 
   stop() {
@@ -31,27 +32,28 @@ class ControlObject2D {
     this.speed = 0
     this.calculateValues()
 
-    console.log(["stop", this.object, this.moving, this.ahead, this.speed, this.duration, this.distance])
+    console.log(["stop", this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y])
 
-    return [this.object, this.moving, this.ahead, this.speed, this.duration, this.distance]
+    return [this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y]
   }
 
-  changeDirection() {
-    this.ahead = false
+  changeDirection(x, y) {
+    this.x = x
+    this.y = y
     this.calculateValues()
 
-    console.log(["changeDirection", this.object, this.moving, this.ahead, this.speed, this.duration, this.distance])
+    console.log(["changeDirection", this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y])
 
-    return [this.object, this.moving, this.ahead, this.speed, this.duration, this.distance]
+    return [this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y]
   }
 
   increaseSpeed(speed) {
     this.speed = this.speed + speed
     this.calculateValues()
 
-    console.log(["increaseSpeed", this.object, this.moving, this.ahead, this.speed, this.duration, this.distance])
+    console.log(["increaseSpeed", this.object, this.moving, , this.speed, this.duration, this.distance, this.x, this.y])
 
-    return [this.object, this.moving, this.ahead, this.speed, this.duration, this.distance]
+    return [this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y]
   }
 
   slowDown(speed) {
@@ -70,23 +72,24 @@ class ControlObject2D {
       this.speed = this.speed - speed
     }
 
-    console.log(["slowDown", this.object, this.moving, this.ahead, this.speed, this.duration, this.distance])
+    console.log(["slowDown", this.object, this.moving, , this.speed, this.duration, this.distance, this.x, this.y])
 
-    return [this.object, this.moving, this.ahead, this.speed, this.duration, this.distance]
+    return [this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y]
   }
 
   resetAll() {
     this.moving = false
-    this.ahead = true
     this.speed = 0
     this.duration = 0
     this.distance = 0
+    this.x = 0
+    this.y = 0
     this.startTime = 0
     this.currentTime = 0
 
-    console.log(["resetAll", this.object, this.moving, this.ahead, this.speed, this.duration, this.distance])
+    console.log(["resetAll", this.object, this.moving, , this.speed, this.duration, this.distance, this.x, this.y])
 
-    return [this.object, this.moving, this.ahead, this.speed, this.duration, this.distance]
+    return [this.object, this.moving, this.speed, this.duration, this.distance, this.x, this.y]
   }
 }
 
