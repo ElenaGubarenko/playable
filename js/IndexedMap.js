@@ -1,11 +1,10 @@
 class IndexedMap {
   constructor() {
-    // this.object = object
     this.counter = 0
     this.collection = []
     this.unionCollection = []
     this.uniqueElements = []
-    this.duplicates = []
+    this.elementsWithUniqueKeys = []
   }
 
   set(key, value) {
@@ -93,9 +92,27 @@ class IndexedMap {
     console.log(this.unionCollection)
   }
 
-  unique() {}
+  unique() {
+    this.uniqueElements = this.collection.reduce((acc, current) => {
+      if (!acc.find((element) => element.value === current.value && element.key === current.key)) {
+        acc.push(current)
+      }
+      return acc
+    }, [])
 
-  uniqueKeys() {}
+    console.log(this.uniqueElements)
+  }
+
+  uniqueKeys() {
+    this.elementsWithUniqueKeys = this.collection.reduce((acc, current) => {
+      if (!acc.find((element) => element.key === current.key)) {
+        acc.push(current)
+      }
+      return acc
+    }, [])
+
+    console.log(this.elementsWithUniqueKeys)
+  }
 
   sort(callback) {
     this.collection.sort(callback)
